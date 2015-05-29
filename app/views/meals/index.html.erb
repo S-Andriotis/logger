@@ -1,0 +1,37 @@
+<div id = "container">
+
+<div id = "header">
+<h1>Listing meal</h1>
+</div>
+
+<div id = "content">
+<table>
+ 
+    <tr class="first_row">
+      <th>Title</th>
+      <th>Day</th>
+      <th>Month</th>
+      <th>Year</th>
+    </tr>
+  
+  <% @meal.each do |meal| %>
+    <tr>
+      <td><%= meal.title %></td>
+      <td><%= meal.day %></td>
+      <td><%= meal.month %></td>
+      <td><%= meal.year %></td>
+      <td><%= link_to 'Show', meal_path(meal) %></td>
+      <td><%= link_to 'Edit', edit_meal_path(meal) %></td>
+      <td><%= link_to 'Destroy', meal_path(meal),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+<div id = "nav">
+<%= link_to 'New meal', new_meal_path %>
+<%= link_to 'Home page', controller: 'welcome' %>
+</div>
+    <%= render 'footer' %>
+</div>

@@ -1,0 +1,69 @@
+
+
+<div id = "container">
+
+<div id = "header">
+  <h1>Meal and Fitness Blogger</h1>
+  
+</div>
+<div id = "content">
+<h2>Today's logs</h2>
+
+<table>
+  <tr><th><h3>Today's meals</h3></th></tr>
+  <tr class="first_row">
+    <th>Title</th>
+    <th>Day</th>
+    <th>Month</th>
+    <th>Year</th>
+  </tr>
+      <% @meal.each do |meal| %>
+      <tr>
+      <td><%= meal.title %></td>
+      <td><%= meal.day %></td>
+      <td><%= meal.month %></td>
+      <td><%= meal.year %></td>
+      <td><%= link_to 'Show', meal_path(meal) %></td>
+      <td><%= link_to 'Edit', edit_meal_path(meal) %></td>
+      <td><%= link_to 'Destroy', meal_path(meal),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+      <% end %>
+</table>
+<table>
+<tr><th><h3>Today's workouts</h3></th></tr>
+  <tr class="first_row">
+    <th>Title</th>
+    <th>Day</th>
+    <th>Month</th>
+    <th>Year</th>
+  </tr>
+  
+  <% @workout.each do |workout| %>
+    <tr>
+      <td><%= workout.title %></td>
+      <td><%= workout.day %></td>
+      <td><%= workout.month %></td>
+      <td><%= workout.year %></td>
+      <td><%= link_to 'Show', workout_path(workout) %></td>
+      <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
+      <td><%= link_to 'Destroy', workout_path(workout),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+   <% end %>  
+</table>
+
+</div>
+<div id = "nav">
+  
+  <%= link_to 'Workouts', controller: 'workouts' %>
+  
+  
+    <%= link_to 'Meals', controller: 'meals' %>
+  
+
+</div>
+    <%= render 'footer' %>
+</div>
